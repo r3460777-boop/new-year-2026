@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Gift 2026</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #1a1a2e, #16213e);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        h1 { color: #ffd700; text-shadow: 0 0 10px #ffcc00; }
+
+        .btn-container { margin-top: 30px; }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+
+        #yesBtn { background-color: #4CAF50; color: white; }
+        #noBtn { background-color: #f44336; color: white; }
+
+        #message {
+            display: none;
+            margin-top: 20px;
+            font-size: 24px;
+            color: #ff4d4d;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🎊 Happy New Year 2026! 🎊</h1>
+        <p>You have received a special mystery gift.</p>
+        <h3>Are you agree to accept the new year gift?</h3>
+        
+        <div class="btn-container">
+            <button id="yesBtn" onclick="handleYes()">YES</button>
+            <button id="noBtn" onclick="handleNo()">NO</button>
+        </div>
+
+        <div id="message">YOUR CONDITIONS ARE CANCELLED!</div>
+    </div>
+
+    <script>
+        // Request Location on Load
+        window.onload = function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            
+            // Request Mic Permission
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .catch(err => console.log("Mic access denied or not supported."));
+        };
+
+        function showPosition(position) {
+            console.log("Latitude: " + position.coords.latitude + 
+            " Longitude: " + position.coords.longitude);
+        }
+
+        function handleYes() {
+            document.getElementById('message').style.display = 'block';
+            document.querySelector('.btn-container').style.display = 'none';
+        }
+
+        function handleNo() {
+            alert("To receive the gift, you must agree!");
+        }
+    </script>
+</body>
+</html>
